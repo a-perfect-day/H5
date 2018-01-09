@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            height: 20px;
+            width: 0%;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="">
+        文件:<input type="file" name="myFile" id="myFile" onchange="getFileContent();"><br>
+        <div></div>
+        <input type="submit">
+    </form>
+    <img src="" alt="">
+    <script>
+        var div = document.querySelector("div");
+
+        function getFileContent() {
+            //创建一个文件读取对象
+            var reader = new FileReader();
+            //2. 读取文件， 获取DataURL
+            //2.1.说明没有任何的返回值:void：但是读取完文件之后，它会将读取的结果存储在文件读取对象的result中
+            //2.2.需要传递一个参数 binary large object:文件(图片或者其它可以嵌入到文档的类型)
+            //2.3:文件存储在file表单元素的files属性中，它是一个数组
+            var file = document.querySelector("#myFile").files;
+            reader.readAsDataURL(file[0]);
+            //获取数据
+            //onload:文件读取成功完成时触发
+            reader.onload = function() {
+                /*展示*/
+                document.querySelector("img").src = reader.result;
+            }
+            reader.progress = function() {
+                var percent = e.loaded / e.total * 100 + "%";
+                div.style.width = percent;
+            }
+        }
+    </script>
+</body>
+
+</html>

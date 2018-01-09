@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .div1 {
+            width: 200px;
+            height: 200px;
+            border: 1px solid red;
+            position: relative;
+            margin-left: 20px;
+            float: left;
+        }
+        
+        .div2 {
+            width: 200px;
+            height: 200px;
+            border: 1px solid blue;
+            position: relative;
+            margin-left: 20px;
+            float: left;
+        }
+        
+        .div3 {
+            width: 200px;
+            height: 200px;
+            border: 1px solid green;
+            position: relative;
+            margin-left: 20px;
+            float: left;
+        }
+        
+        p {
+            background-color: orange;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="div1" id="div1">
+        <!--在h5中，如果想拖拽元素，就必须为元素添加draggable="true". 图片和超链接默认就可以拖拽-->
+        <p id="pe" draggable="true">试着把我拖过去</p>
+        <p id="pe1" draggable="true">试着也把我拖过去</p>
+    </div>
+    <div class="div2" id="div2"></div>
+    <div class="div3" id="div3"></div>
+    <script>
+        //ondragstart当拖拽时开始调用
+        // p.ondragstart = function() {
+        //         console.log("开始了：ondragstart")
+        //     }
+        //     //ondragleave当鼠标离开拖拽元素时开始调用
+        // p.ondragleave = function() {
+        //         console.log("被拖了：ondrageave")
+        //     }
+        //     //ondragend拖拽结束时开始调用
+        // p.ondragend = function() {
+        //         console.log("结束了：ondragend")
+        //     }
+        //     //ondragenter当拖拽元素进入时调用
+        // div2.ondraenter = function() {
+        //         console.log("进入了：ondragenter")
+        //     }
+        //     //ondraove当停留在目标元素上时调用
+        //     //浏览器默认阻止拖拽，必须在ondragove里面去阻止浏览器的默认行为
+        //     //传形参点出方法preventDefault()
+        // div2.ondragover = function(e) {
+        //         e.preventDefault();
+        //     }
+        //     //当在目标元素上松开时调用
+        // div2.ondrop = function() {
+        //         console.log("松开了：ondrop")
+        //         div2.appendChild(p)
+        //     }
+        //     //当鼠标离开目标元素时调用
+        // div2.ondragleave = function() {
+        //     console.log("目标元素ondragleave")
+        // }
+        // div1.ondragover = function(e) {
+        //     e.preventDefault();
+        // }
+        // div1.ondrop = function() {
+        //     div1.appendChild(p)
+        // }
+        var obj = null;
+        document.ondragstart = function(e) {
+                obj = e.target;
+            }
+            //ondragleave当鼠标离开拖拽元素时开始调用
+        document.ondragleave = function(e) {}
+            //ondragend拖拽结束时开始调用
+        document.ondragend = function(e) {}
+            //ondragenter当拖拽元素进入时调用
+        document.ondraenter = function(e) {}
+            // ondragenter– 当拖拽的元素进入时掉用
+            // ondragover– 当停留在目标元素上时调用
+            // ondrop– 当在目标元素上松开鼠标时调用
+            // ondragleave– 当鼠标离开目标元素时调用
+        document.ndragenter = function(e) {
+            console.log(e.target)
+        }
+        document.ondragover = function(e) {
+            e.preventDefault(); //阻止默认行为
+        }
+        document.ondrop = function(e) {
+            e.target.appendChild(obj)
+        }
+        document.ondragleave = function(e) {}
+    </script>
+</body>
+
+</html>

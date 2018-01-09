@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <img src="images.jpg" alt="">
+        <input type="button" id="full" value="全屏">
+        <input type="button" id="cancelFull" value="退出全屏">
+        <input type="button" id="isFull" value="是否是全屏">
+    </div>
+    <script>
+        //全屏操作的方法  
+        //requestFullScreen全屏显示
+        //canceFullScreen退出全屏显示
+        //fullScreenEliment是否是全屏显示
+        //不同浏览器需要添加不同的前缀
+        //谷歌:webkit   火狐:moz   ie:ms   欧朋:o
+        window.onload = function() {
+            var div = document.querySelector("div"); //指定元素
+            document.querySelector("#full").onclick = function() {
+                    if (div.requestFullScreen) {
+                        div.requestFullScreen();
+                    } else if (div.webkitRequestFullScreen) {
+                        div.webkitRequestFullScreen();
+                    } else if (div.mozRequesetFullScreen) {
+                        div.mozRequestFullScreen();
+                    } else if (div.msRequestFullScreen) {
+                        div.msRequestFullScreen();
+                    }
+                }
+                //退出全屏显示
+            document.querySelector("#cancelFull").onclick = function() {
+                if (document.cancelFullScreen) {
+                    document.cancelFullScreen();
+                } else if (document.webkitCancelFullScreen) {
+                    document.webkitCancelFullScreen();
+                } else if (document.mozCancelFullScreen) {
+                    document.mozCancelFullScreen();
+                } else if (document.msCancelFullScreen) {
+                    document.msCancelFullScreen();
+                }
+            }
+            document.querySelector("#isFull").onclick = function() {
+                if (document.fullscreenElement || document.mozFullScreenElement || document.msFullscreenElement || document.webkitFullscreenElement) {
+                    alert(true)
+                } else {
+                    alert(false)
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+        body {
+            text-align: center;
+        }
+        
+        .container {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .colorBox {
+            width: 100px;
+            height: 100px;
+            border: 1px solid gray;
+            margin: 0 20px;
+        }
+        
+        .showBox {
+            width: 100px;
+            height: 100px;
+            border: 5px dashed gray;
+            margin: 0 auto;
+        }
+        
+        .colorBox:nth-child(1) {
+            background-color: orange;
+        }
+        
+        .colorBox:nth-child(2) {
+            background-color: skyblue;
+        }
+        
+        .colorBox:nth-child(3) {
+            background-color: yellowgreen;
+        }
+        
+        img {
+            border: 1px solid gray;
+            margin: 0 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!--h1{支持拖拽的元素}+img[src='images/lf.jpg']*3+h1{需要开启拖拽的元素}+div.colorBox*3+h1{展示框}+div.showBox-->
+    <h1>支持拖拽的元素</h1>
+    <img src="images/lf.jpg" alt="" />
+    <img src="images/nm.jpg" alt="" />
+    <img src="images/sl.jpg" alt="" />
+
+    <h1>需要开启拖拽的元素</h1>
+
+    <div class='container'>
+        <!--添加开启拖拽属性-->
+        <div class="colorBox" draggable="true"></div>
+        <div class="colorBox" draggable="true"></div>
+        <div class="colorBox" draggable="true"></div>
+    </div>
+    <h1>展示框</h1>
+
+    <div class="showBox"></div>
+    <script>
+        // var obj;
+        // var showBox = document.querySelector(".showBox");
+        // document.ondragover = function(e) {
+        //     e.preventDefault();
+        // };
+        // document.querySelector(".showBox").ondrop = function() {
+        //     if (obj.src) {
+        //         this.style.background = 'url(' + obj.src + ') no-repeat center/cover';
+        //     } else {
+        //         this.style.background = window.getComputedStyle(obj).backgroundColor
+        //     }
+        // };
+        // document.ondragstart = function(e) {
+        //     obj = e.target;
+        // };
+        // var obj;
+        // var showBox = document.querySelector(".showBox"); //获取目标元素
+        // document.ondragover = function(e) { //ondragover当停留在目标元素是调用
+        //     e.preventDefault(); //清除浏览器默认
+        // };
+        // document.querySelector(".showBox").ondrop = function() {
+        //         //判断如果有src属性那么就是图片  否则就是其他元素
+        //         if (obj.src) {
+        //             this.style.background = "url(" + obj.src + ")no-repeat center/cover"
+        //         } else {
+        //             this.style.background = window.getComputedStyle(obj).backgroundColor;
+        //         }
+        //     }
+        //     //ondragstart当拖拽时开始调用
+        // document.ondragstart = function(e) {
+        //     obj = e.target;
+        // }
+
+        var obj;
+        //获取目标元素
+        var showBox = document.querySelector(".showBox");
+        //ondragover当停留在目标元素时调用  需要清除浏览器默认行为
+        document.ondragover = function(e) {
+                e.preventDefault();
+            }
+            //ondrop当在目标是元素上松开鼠标时触发
+        document.querySelector(".showBox").ondrop = function() {
+            //判断如果obj有src属性那么就是图片  否则就是其他元素
+            if (obj.src) {
+                this.style.background = "url(" + obj.src + ")no-repeat center/cover"
+            } else {
+                this.style.background = window.getComputedStyle(obj).backgroundColor;
+            }
+        }
+        document.ondragstart = function(e) {
+            obj = e.target;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        var obj;
+        //获取目标元素
+        var showBox = document.querySelector(".showBox");
+        //当停留在目标元素上时调用  需要清除浏览器默认行为
+        document.ondragover = function(e) {
+                e.preventDefault();
+            }
+            //当在目标元素上松开鼠标时调用
+        document.querySelector(".showBox").ondrop = function() {
+            //判断如果有obj里有src属性那么就是图片  否则就是其他元素
+            if (obj.src) {
+                this.style.background = "url(" + obj.src + ")no-repeat center/cover"
+            } else {
+                this.style.background = window.getComputedStyle(obj).backgroundColor;
+            }
+        }
+        document.ondragstart = function(e) {
+            obj = e.target;
+        }
+    </script>
+</body>
+
+</html>
